@@ -5,8 +5,6 @@
 
 
 # 라이브러리
-import pandas as pd
-import plotly.express as px
 import streamlit as st
 
 
