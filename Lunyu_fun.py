@@ -620,14 +620,17 @@ elif sidebar == "說":
 elif sidebar == "논어전문":
     st.title('논어 전문 필터링')
     search_term = st.text_input("검색어를 입력하세요.")
-
+    
+    with open('lunyu.txt', 'r', encoding='utf-8') as file: 
+        lunyu_txt = file.read()
+    
     if search_term:
-        filtered_text = [paragraph for paragraph in lunyu if search_term in paragraph]
+        filtered_text = [line for line in lunyu_txt.split("\n") if search_term in line]
         if filtered_text:
-            st.header("검색 결과")
-            st.text("\n\n".join(filtered_text))  # 검색 결과를 출력할 때 문단 간에 빈 줄 추가
+            st.text("\n".join(filtered_text))
         else:
-            st.info("검색어에 해당하는 내용이 없습니다.")
-
-
+            st.text("검색어에 해당하는 내용이 없습니다.")
+    else:
+        # 검색어가 입력되지 않으면 전체 텍스트 표시
+        st.text(lunyu_txt)
 
