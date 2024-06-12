@@ -6,6 +6,7 @@
 
 # 라이브러리
 import streamlit as st
+import requests
 
 
 # In[4]:
@@ -19,10 +20,14 @@ st.set_page_config(layout="wide")
 
 
 # 논어 전문 불러오기
-with open ('lunyu.txt', 'r', encoding = 'utf-8') as file: 
-    lunyu_txt = file.read()
+url = 'https://raw.githubusercontent.com/ssu-bak/Lunyu_streamlit/main/lunyu.txt'
+response = requests.get(url)
 
-
+if response.status_code == 200:
+    lunyu = response.text
+else:
+    lunyu = "파일을 다운로드할 수 없습니다."
+    
 # In[6]:
 
 
@@ -620,17 +625,6 @@ elif sidebar == "논어전문":
     else:
         # 검색어가 입력되지 않으면 전체 텍스트 표시
         st.text("검색어를 입력하세요.")
-
-    
-    st.markdown(lunyu_txt)
-    st.markdown('''
-    
-    ''')
-    st.divider()
-
-
-# In[ ]:
-
 
 
 
