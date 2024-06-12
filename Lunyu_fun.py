@@ -625,11 +625,9 @@ elif sidebar == "논어전문":
         lunyu_txt = file.read()
     
     if search_term:
-        filtered_text = [line for line in lunyu_txt.split("\n") if search_term in line]
+        filtered_text = [line.strip() for line in lunyu_txt.split("\n") if search_term in line]
         if filtered_text:
             st.text("\n".join(filtered_text))
-        else:
-            st.text("검색어에 해당하는 내용이 없습니다.")
     else:
         # 검색어가 입력되지 않으면 전체 텍스트 표시
         st.text(lunyu_txt)
