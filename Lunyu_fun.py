@@ -622,14 +622,14 @@ elif sidebar == "논어전문":
     search_term = st.text_input("검색어를 입력하세요.")
 
     if search_term:
-        filtered_text = [line for line in lunyu.split("\n") if search_term in line]
+        filtered_text = [line for line in lunyu.splitlines() if search_term in line]
         if filtered_text:
             st.text("\n".join(filtered_text))
         else:
             st.text("검색어에 해당하는 내용이 없습니다.")
     else:
         # 검색어가 입력되지 않으면 전체 텍스트 표시
-        st.text("검색어를 입력하세요.")
+        st.text(lunyu)
 
 
 
