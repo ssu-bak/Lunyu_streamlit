@@ -25,9 +25,14 @@ response = requests.get(url)
 
 if response.status_code == 200:
     lunyu = response.text
+    st.write("파일 다운로드 성공")  # 성공 메시지
 else:
     lunyu = "파일을 다운로드할 수 없습니다."
-    
+    st.error(f"파일을 다운로드할 수 없습니다: {url}")
+
+# 응답 내용 출력 (디버깅 용도)
+st.write(f"응답 내용: {lunyu[:500]}...")  # 처음 500자만 출력하여 응답 내용 확인
+
 # In[6]:
 
 
