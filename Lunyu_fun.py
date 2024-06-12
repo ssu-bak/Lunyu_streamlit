@@ -622,10 +622,10 @@ elif sidebar == "논어전문":
     search_term = st.text_input("검색어를 입력하세요.")
 
     if search_term:
-        filtered_text = [line for line in lunyu if search_term in line]
+        filtered_text = [paragraph for paragraph in lunyu if search_term in paragraph]
         if filtered_text:
             st.header("검색 결과")
-            st.text("\n".join(filtered_text))
+            st.text("\n\n".join(filtered_text))  # 검색 결과를 출력할 때 문단 간에 빈 줄 추가
         else:
             st.info("검색어에 해당하는 내용이 없습니다.")
 
