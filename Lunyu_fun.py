@@ -718,4 +718,3 @@ elif sidebar == "논어전문":
     else:
         # 검색어가 입력되지 않으면 전체 텍스트 표시
         st.text(lunyu_txt)
-
